@@ -16,6 +16,13 @@
 			.theWord{
 				display: inline-block;
 				margin-top: 41vh;
+				-webkit-touch-callout: none; /* iOS Safari */
+			    -webkit-user-select: none; /* Safari */
+			     -khtml-user-select: none; /* Konqueror HTML */
+			       -moz-user-select: none; /* Firefox */
+			        -ms-user-select: none; /* Internet Explorer/Edge */
+			            user-select: none;
+
 			}
 
 		</style>
@@ -25,10 +32,13 @@
 	<body>
 		<div class="theWord"></div>
 		<script>
+
+			var firstWord = new Array();
+			var secondWord = new Array();
+
 			$.get('https://raw.githubusercontent.com/yeonryoo/serendipitousWords/master/words.txt',function(data){
 				var words = data.split('\n');
-				var firstWord = new Array();
-				var secondWord = new Array();
+				
 				var c1=0;
 				var c2=0;
 				var f=0;
@@ -53,8 +63,14 @@
 				var n2 = parseInt(Math.random()*secondWord.length);
 
 				$(".theWord").append(firstWord[n1]+" "+secondWord[n2]);
-
 			}, 'text');
+
+			$("body").click(function(){
+				var n1 = parseInt(Math.random()*firstWord.length);
+				var n2 = parseInt(Math.random()*secondWord.length);
+				$(".theWord").empty();
+				$(".theWord").append(firstWord[n1]+" "+secondWord[n2]);
+			});
 		</script>
 	</body>
 

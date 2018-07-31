@@ -10,10 +10,12 @@
 				background-color:black;
 				color:white;
 				font-family: "gt america";
-				font-size:5vw;
+				font-size:10vh;
+				text-align: center;
 			}
 			.theWord{
-				margin: 0 auto;
+				display: inline-block;
+				margin-top: 42vh;
 			}
 
 		</style>
@@ -23,8 +25,35 @@
 	<body>
 		<div class="theWord"></div>
 		<script>
-			$.get('words.txt',function(data){
-				console.log(data+"hello");
+			$.get('https://raw.githubusercontent.com/yeonryoo/serendipitousWords/master/words.txt',function(data){
+				var words = data.split('\n');
+				var firstWord = new Array();
+				var secondWord = new Array();
+				var c1=0;
+				var c2=0;
+				var f=0;
+				for(var i=0; i<words.length; i++)
+				{
+					f = (words[i] == "FIRST WORD") ? 1 : f;
+					f = (words[i] == "SECOND WORD") ? 2 : f;
+						
+					if(f == 1 && words[i] != "" && words[i] != "FIRST WORD")
+					{
+						firstWord[c1] = words[i];
+						c1++;
+					}
+
+					else if(f == 2 && words[i] != "" && words[i] != "SECOND WORD")
+					{
+						secondWord[c2] = words[i];
+						c2++;
+					}
+				}
+				var n1 = parseInt(Math.random()*firstWord.length);
+				var n2 = parseInt(Math.random()*secondWord.length);
+
+				$(".theWord").append(firstWord[n1]+" "+secondWord[n2]);
+
 			}, 'text');
 		</script>
 	</body>

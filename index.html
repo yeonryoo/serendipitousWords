@@ -1,0 +1,32 @@
+<html>
+	<head>
+		<title>Serendipitous Words</title>
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+		<style>
+
+			body{
+				width: 100%;
+				height: 100%;
+				background-color:black;
+				color:white;
+				font-family: "gt america";
+				font-size:5vw;
+			}
+			.theWord{
+				margin: 0 auto;
+			}
+
+		</style>
+	</head>
+	
+
+	<body>
+		<div class="theWord"></div>
+		<script>
+			$.get('words.txt',function(data){
+				console.log(data+"hello");
+			}, 'text');
+		</script>
+	</body>
+
+</html>
